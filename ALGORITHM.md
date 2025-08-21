@@ -1,55 +1,139 @@
-# Cider Falls - Project Algorithm 
+# 🏞️ Cider Falls - Project Algorithm
 
-## 1. Create a database for the project resources and functions for returning each resource. (See ERD asset)
-Format: const database = [destinations: [{},{},{}], services: [{},{},{}], guests: [{},{},{}]]
+## Overview
+A web application for managing resort destinations, services, and guest assignments with interactive features and dynamic content rendering.
 
-### a. Destinations: An array of destination objects {id: integer, name: varchar, location: varchar, services: array of services.id foreign keys} 
-function: getDestinations() => return database.destinations
+---
 
-### b. Services: An Array of service objects: {id: integer, name: varchar}
-function: getServices() => return database.services
+## 📊 Phase 1: Database Setup & Data Layer
 
-### c. Guests: An array of guest objects: {id: integer, first_name: varchar, last_name: varchar, location: integer (destination.id foreign key)}
-function: getGuests() => return database.guests
+### Database Structure
+```javascript
+const database = {
+  destinations: [{},{},{}],
+  services: [{},{},{}], 
+  guests: [{},{},{}]
+}
+```
 
-## 2. Create the basic page layout (index.js & layout.css) (See wireframe asset)
-### a. Header: Contains logo and title
+### 🏨 Destinations
+**Structure:** `{id: integer, name: varchar, location: varchar, services: array of services.id}`
+- **Function:** `getDestinations()` → returns `database.destinations`
+- **Purpose:** Store resort location data with associated service offerings
 
-### b. Main Content: Contains two columns:
-- Column 1: Contains services class="services_container" & destinations class="destinations_container"
-- Column 2: Contains guest info class="guests_container"
+### 🛎️ Services  
+**Structure:** `{id: integer, name: varchar}`
+- **Function:** `getServices()` → returns `database.services`
+- **Purpose:** Catalog of available resort amenities and activities
 
-### c. Footer: Contains contact info
-### d. script: main.js
+### 👥 Guests
+**Structure:** `{id: integer, first_name: varchar, last_name: varchar, location: integer}`
+- **Function:** `getGuests()` → returns `database.guests` 
+- **Purpose:** Guest registry with destination assignments
+- **Note:** `location` field references `destination.id` as foreign key
 
-## 3. Create the main components
-### a. guests.js - Render guest names, assign random location to guest
-Logic flow:
-1. import getGuests() - returns an array of objects
-2. import getDestinations() - returns an array of objects 
-3. export generateGuestsHtml((guests) => return guestHtmlString)
-4. export assignRandomDestination((guests, destinations) => for guest of guests, create a random destination id, and assign to guest.location)
+---
 
-### b. services.js - Render services, create an alert that shows destinations offering selected service
-Logic flow:
-1. import getServices() - returns an array of objects
-2. import getDestinations() - returns an array of objects
-3. export generateServicesHtml((services) => return servicesHtmlString)
-4. export handleServiceClick((event) => creates an alert showing destinations offering clicked service)
+## 🎨 Phase 2: Page Layout & Structure
 
-### c. destinations.js - Render destinations in a 2x3 grid in the proper location (Northwest, North, South East, etc), create an alert showing number of guests in selected destination
-Logic flow:
-1. import getDestinations() - returns an array of objects
-2. import getGuests() - returns an array of objects
-3. export generateDestinationHtml((destinations) => returns destinationsHtmlString)
-4. export handleDestinationClick((event) => creates an alert showing number of guests in clicked destination)
+### File Structure
+- `index.html` - Main HTML structure
+- `layout.css` - Basic layout styling
+- `main.js` - Application entry point
 
-### d. main.js - Invokes html generator functions and inserts into DOM, adds event listeners for destination & services clicks
-Logic flow:
-1. import html generator functions (generateGuestsHtml,generateServicesHtml,generateDestinationHtml)
-2. import event listeners handlers (handleServiceClick, handleDestinationClick)
-3. retrieve DOM elements (html containers, event listener targets)
-4. Add generated html to the appropriate dom location (document.querySelector(container).innerHtml = generatedHtml)
-5. Add event listeners and assign appropriate handlers (document.addEventLister("click", handlerFunction))
+### Layout Components
 
-## 4. Style the page (styles.css)
+#### 📋 Header
+- Resort logo
+- Application title
+
+#### 🏗️ Main Content (Two-Column Layout)
+**Column 1:**
+- Services container: `class="services_container"`
+- Destinations container: `class="destinations_container"`
+
+**Column 2:**
+- Guest information: `class="guests_container"`
+
+#### 📞 Footer
+- Contact information and resort details
+
+---
+
+## ⚙️ Phase 3: Component Development
+
+### 🏠 `guests.js` - Guest Management Component
+**Responsibilities:** Render guest list and handle random destination assignments
+
+**Logic Flow:**
+1. **Import Dependencies**
+   - `getGuests()` → retrieves guest array
+   - `getDestinations()` → retrieves destination array
+
+2. **Export Functions**
+   - `generateGuestsHtml(guests)` → returns formatted HTML string
+   - `assignRandomDestination(guests, destinations)` → randomly assigns destinations to guests
+
+### 🎯 `services.js` - Services Management Component  
+**Responsibilities:** Display services and show destinations offering selected services
+
+**Logic Flow:**
+1. **Import Dependencies**
+   - `getServices()` → retrieves services array
+   - `getDestinations()` → retrieves destinations array
+
+2. **Export Functions**
+   - `generateServicesHtml(services)` → returns formatted HTML string
+   - `handleServiceClick(event)` → displays alert with destinations offering clicked service
+
+### 🗺️ `destinations.js` - Destinations Management Component
+**Responsibilities:** Display destinations in geographic grid and show guest counts
+
+**Features:**
+- 2×3 grid layout organized by location (Northwest, North, Southeast, etc.)
+- Interactive destination selection
+
+**Logic Flow:**
+1. **Import Dependencies**
+   - `getDestinations()` → retrieves destinations array  
+   - `getGuests()` → retrieves guests array
+
+2. **Export Functions**
+   - `generateDestinationHtml(destinations)` → returns formatted HTML string
+   - `handleDestinationClick(event)` → displays alert with guest count for selected destination
+
+### 🚀 `main.js` - Application Controller
+**Responsibilities:** Orchestrate component rendering and event handling
+
+**Logic Flow:**
+1. **Import Components**
+   - HTML generators: `generateGuestsHtml`, `generateServicesHtml`, `generateDestinationHtml`
+   - Event handlers: `handleServiceClick`, `handleDestinationClick`
+
+2. **DOM Manipulation**
+   - Retrieve container elements with `document.querySelector()`
+   - Insert generated HTML: `container.innerHTML = generatedHtml`
+
+3. **Event Management**
+   - Attach click listeners: `document.addEventListener("click", handlerFunction)`
+   - Route events to appropriate handlers
+
+---
+
+## 💅 Phase 4: Styling & Polish
+
+### `styles.css`
+- Implement responsive design
+- Style component layouts
+- Add visual hierarchy and branding
+- Ensure accessibility and usability
+
+---
+
+## 🎯 Key Features Summary
+
+- **Dynamic Content:** All content rendered from JavaScript data structures
+- **Interactive Elements:** Clickable services and destinations with informational alerts  
+- **Random Assignment:** Guests automatically assigned to random destinations
+- **Geographic Organization:** Destinations displayed in logical geographic grid
+- **Modular Architecture:** Separation of concerns across multiple component files
