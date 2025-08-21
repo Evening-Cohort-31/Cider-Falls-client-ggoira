@@ -1,7 +1,7 @@
 # Cider Falls - Project Algorithm 
 
 ## 1. Create a database for the project resources and functions for returning each resource. (See ERD asset)
-Format: const database = [destinations: [{},{},{}], services: [{},{},{}, guests: [{},{},{}]]
+Format: const database = [destinations: [{},{},{}], services: [{},{},{}], guests: [{},{},{}]]
 
 ### a. Destinations: An array of destination objects {id: integer, name: varchar, location: varchar, services: array of services.id foreign keys} 
 function: getDestinations() => return database.destinations
