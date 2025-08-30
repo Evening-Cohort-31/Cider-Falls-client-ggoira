@@ -1,0 +1,24 @@
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.column_left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 0 64%;
+}
+
+.column_right {
+    flex: 0 0 31%;
+}
+
+.destinations {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
