@@ -5,4 +5,4 @@
 // const destinations = getDestinations()
 // const testGuest = assignRandomDestination(guests, destinations)
 // const guestRightSide = document.querySelector(".column_right")
-// guestRightSide.innerHTML = generateGuestsHtml(testGuest)
+
