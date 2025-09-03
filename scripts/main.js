@@ -6,3 +6,11 @@
 // const testGuest = assignRandomDestination(guests, destinations)
 // const guestRightSide = document.querySelector(".column_right")
 // guestRightSide.innerHTML = generateGuestsHtml(testGuest)
+
+
+// import { generateServicesHtml } from "./services.js"
+
+// const servicesHTML = generateServicesHtml()
+
+// const servicesContainer = document.querySelector(".services")
+// servicesContainer.innerHTML = servicesHTML
