@@ -14,11 +14,3 @@
 
 // const servicesContainer = document.querySelector(".services")
 // servicesContainer.innerHTML = servicesHTML
-
-
-// import { generateServicesHtml } from "./services.js"
-
-// const servicesHTML = generateServicesHtml()
-
-// const servicesContainer = document.querySelector(".services")
-// servicesContainer.innerHTML = servicesHTML
