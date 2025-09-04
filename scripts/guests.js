@@ -4,7 +4,7 @@ export const generateGuestsHtml = (guests, destinations) => {
 
     for (const guest of guests) {
 
-        let currentDestination = "Unknown"
+        let currentDestination = "where?"
 
         for (const destination of destinations) {
             if (destination.id === guest.destinationId) {
