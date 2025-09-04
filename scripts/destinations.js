@@ -11,10 +11,6 @@ import {
 /* There will need to be a function to iterate the locations and extract the services available at each location
 based on the services
 */
-
-let destinations = getDestinations();
-let servicesAtDestinations = getDestinationServices();
-
 //Function to iterate and match the different services to their locations and create a variable for them.
 
 const serviceFinder = (destination) => {
@@ -62,5 +58,7 @@ export const LocationsCard = (destinations) => {
   }
 
   cardHTML += `</section>`;
+
+  return cardHTML
 };
 
