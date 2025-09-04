@@ -1,5 +1,6 @@
 // This module will import a structured clone of the data about the locations and services.
 
+
 import {
   getDestinations,
   getDestinationServices,
@@ -11,6 +12,7 @@ import {
 /* There will need to be a function to iterate the locations and extract the services available at each location
 based on the services
 */
+
 //Function to iterate and match the different services to their locations and create a variable for them.
 
 const serviceFinder = (destination) => {
@@ -45,6 +47,7 @@ export const LocationsCard = (destinations) => {
   // Iterate all the locations from database
 
   for (const place of destinations) {
+
     let services = serviceFinder(place);
     cardHTML += `
                          <div class="place_text"
@@ -61,4 +64,3 @@ export const LocationsCard = (destinations) => {
 
   return cardHTML
 };
-
