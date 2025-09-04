@@ -1,12 +1,22 @@
 
-export const generateGuestsHtml = (guests) => {
+export const generateGuestsHtml = (guests, destinations) => {
     let guestsHTML = "<ul>"
 
     for (const guest of guests) {
+
+        let currentDestination = "Unknown"
+
+        for (const destination of destinations) {
+            if (destination.id === guest.destinationId) {
+                currentDestination = destination.name
+            }
+        }
+
         guestsHTML += ` <li data-type="guest"
                             data-id="${guest.id}"
                             data-destinationId="${guest.destinationId}">
                             ${guest.first_name} ${guest.last_name}
+                            (Currently visiting: ${currentDestination})
                         </li>`
     }
     guestsHTML += "</ul>"
