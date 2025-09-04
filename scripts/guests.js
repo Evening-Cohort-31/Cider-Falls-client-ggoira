@@ -1,8 +1,9 @@
-
 export const generateGuestsHtml = (guests, destinations) => {
+
+    let updatedGuests = assignRandomDestination(guests, destinations)
     let guestsHTML = "<ul>"
 
-    for (const guest of guests) {
+    for (const guest of updatedGuests) {
 
         let currentDestination = "where?"
 
