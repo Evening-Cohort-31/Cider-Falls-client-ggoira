@@ -1,6 +1,5 @@
 // This module will import a structured clone of the data about the locations and services.
 
-
 import {
   getDestinations,
   getDestinationServices,
@@ -33,34 +32,35 @@ const serviceFinder = (destination) => {
       }
     }
   }
-  let servicesHTML = `<ul>`
+  let servicesHTML = `<ul>`;
   for (const each of serviceMatch) {
-   servicesHTML +=` <li>${each}</li>`
+    servicesHTML += ` <li>${each}</li>`;
   }
-  servicesHTML += `</ul>`
-  return servicesHTML
+  servicesHTML += `</ul>`;
+  return servicesHTML;
 };
 
 export const LocationsCard = (destinations) => {
-  let cardHTML = '<section class="place">';
+  let cardHTML = '<section class="places-container">';
 
   // Iterate all the locations from database
 
   for (const place of destinations) {
-
     let services = serviceFinder(place);
     cardHTML += `
                          <div class="place_text"
                          data-name="${place.name}"
                          data-id="${place.id}"
                          data-location="${place.location}>
-                            <h3 class="place_name">${place.name}</h2>
+                            <h3 class="place_name">${place.name}</h3>
                             <p class="place_location">- ${place.location} -</p>
-                            ${services}
+                            <div class="services-on-card">${services}</div>
                          </div>`;
+
   }
 
   cardHTML += `</section>`;
 
-  return cardHTML
+  return cardHTML;
 };
+
